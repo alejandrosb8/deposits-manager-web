@@ -1,0 +1,112 @@
+.blacker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 50;
+  display: grid;
+  place-content: center;
+}
+.title {
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.form {
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  position: relative;
+  margin-top: 40px;
+}
+.searchIcon {
+  position: absolute;
+  width: 2rem;
+  left: 2px;
+  top: 0;
+  bottom: 0;
+  transform: translateY(calc(50% - 1rem));
+  -webkit-transform: translateY(calc(50% - 1rem));
+  -moz-transform: translateY(calc(50% - 1rem));
+  -ms-transform: translateY(calc(50% - 1rem));
+  -o-transform: translateY(calc(50% - 1rem));
+}
+.searchInput {
+  width: 100%;
+  height: auto;
+  font-size: 1.3rem;
+  padding: 8px 4px;
+  border: none;
+  outline: none;
+  padding-left: 2.2rem;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  box-shadow: 0 0 18px 4px hsl(238, 31%, 35%);
+}
+.tableContainer {
+  width: 100%;
+  margin: 30px auto;
+  overflow: auto;
+  height: auto;
+}
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+.tableHeader {
+  width: 100%;
+  overflow: auto;
+  background-color: var(--blue);
+  text-align: center;
+}
+.tableHeader td {
+  padding: 10px;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+}
+.tableRow {
+  width: 100%;
+  overflow: auto;
+  background-color: aliceblue;
+  text-align: center;
+}
+.tableRow td {
+  padding: 10px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+}
+.trashIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 4px;
+  border: 2px solid var(--blue);
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -ms-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.trashIcon:hover {
+  background-color: var(--blue);
+}
