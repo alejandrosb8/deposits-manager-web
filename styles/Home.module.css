@@ -1,0 +1,91 @@
+.title {
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.text {
+  width: 80%;
+  min-width: 310px;
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #eee;
+  margin: auto;
+  font-weight: 400;
+  margin-top: 25px;
+}
+.carouselContainer {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+.Carrusel__Home {
+  width: 100%;
+  height: auto;
+  margin: 5rem auto 0;
+  overflow: hidden;
+}
+
+.Carrusel__Home ul {
+  display: flex;
+  padding: 0;
+  width: 300%;
+  animation: slide 10s infinite alternate ease-in-out;
+  -webkit-animation: slide 10s infinite alternate ease-in-out;
+}
+
+.Carrusel__Home li {
+  width: 100%;
+  list-style: none;
+}
+
+.Carrusel__Home image {
+  width: 100%;
+  margin: 1rem;
+  padding: 0 5rem 0 2rem;
+}
+@keyframes slide {
+  0% {
+    margin-left: 0%;
+  }
+  30% {
+    margin-left: 0%;
+  }
+
+  35% {
+    margin-left: -100%;
+  }
+  60% {
+    margin-left: -100%;
+  }
+
+  65% {
+    margin-left: -200%;
+  }
+  100% {
+    margin-left: -200%;
+  }
+}
+.subtitle {
+  text-align: center;
+  margin: auto;
+  margin-top: 80px;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.countrysContainer {
+  width: 80%;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  place-items: center;
+  place-content: center;
+  column-gap: 30px;
+  row-gap: 40px;
+}

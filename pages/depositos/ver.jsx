@@ -39,8 +39,8 @@ export default function Ver() {
   };
 
   const handleClick = async (code) => {
-    const query = deleteDeposit(code, localStorage.getItem('token'));
-    if (query.Status == 2) {
+    const query = await deleteDeposit(code, localStorage.getItem('token'));
+    if (query.Status == -2) {
       router.push('/login');
     } else {
       router.reload();

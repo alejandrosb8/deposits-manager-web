@@ -33,6 +33,11 @@ export default function Agregar() {
     const submitData = await addDeposit(deposito, token);
 
     if (submitData.Status === 0) {
+      codigo.value = '';
+      nombre.value = '';
+      direccion.value = '';
+      representante.value = '';
+      telefono.value = '';
       alert('Deposito agregado con exito');
     } else {
       sessionStorage.clear('token');
