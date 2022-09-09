@@ -45,7 +45,7 @@ export default function Login() {
         <form className={styles.form} onSubmit={handleSutmit}>
           <h2 className={styles.form__title}>{'Inicio Sesión'}</h2>
           <div className={styles.form__inputContainer}>
-            <input type="text" id="idUser" required placeholder={'Correo Electronico'} className={styles.form__input} />
+            <input type="text" id="idUser" required placeholder={'Correo Electrónico'} className={styles.form__input} />
             <input type="password" id="password" required placeholder={'Contraseña'} className={styles.form__input} />
           </div>
           {loading ? (

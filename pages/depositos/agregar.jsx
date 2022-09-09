@@ -39,9 +39,13 @@ export default function Agregar() {
       representante.value = '';
       telefono.value = '';
       alert('Deposito agregado con exito');
-    } else {
+    } else if (submitData.Status == -2) {
       sessionStorage.clear('token');
       router.push('/login');
+    } else if (submitData.Status == -98) {
+      alert('El código introducido ya existe');
+    } else {
+      alert(submitData.Status);
     }
 
     setLoading(false);
@@ -51,20 +55,20 @@ export default function Agregar() {
     <>
       <Header />
       <Background />
-      <Layout title="Saint - Depositos">
-        <h1 className={styles.title}>Agregar un deposito</h1>
+      <Layout title={'Saint - Depósitos'}>
+        <h1 className={styles.title}>{'Agregar un depósito'}</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputContainer}>
             <div className={styles.inputGroup}>
-              <label htmlFor="codigo">Codigo</label>
+              <label htmlFor="codigo">{'Código'}</label>
               <input type="text" placeholder="p.ej 01" id="codigo" required />
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="nombre">Nombre</label>
-              <input type="text" placeholder="p.ej Mi deposito" id="nombre" required />
+              <input type="text" placeholder="p.ej Mi depósito" id="nombre" required />
             </div>
             <div className={styles.inputGroup}>
-              <label htmlFor="direccion">Direccion</label>
+              <label htmlFor="direccion">{'Dirección'}</label>
               <input type="text" placeholder="p.ej Avenida 7 Calle 8" id="direccion" required />
             </div>
             <div className={styles.inputGroup}>
@@ -72,7 +76,7 @@ export default function Agregar() {
               <input type="text" placeholder="p.ej Manuel Carroz" id="representante" required />
             </div>
             <div className={styles.inputGroup}>
-              <label htmlFor="telefono">Telefono</label>
+              <label htmlFor="telefono">{'Teléfono'}</label>
               <input type="tel" placeholder="p.ej 4124546867" id="telefono" pattern="[0-9]{10}" required />
             </div>
           </div>

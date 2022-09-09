@@ -28,11 +28,11 @@ const countrys = [
     src: 'https://saintnet.com/wp-content/uploads/2022/01/Argentina-272x182.png',
   },
   {
-    name: 'Peru',
+    name: 'Perú',
     src: 'https://saintnet.com/wp-content/uploads/2022/01/Peru%CC%81-272x182.png',
   },
   {
-    name: 'Mexico',
+    name: 'México',
     src: 'https://saintnet.com/wp-content/uploads/2022/03/Mexico-272x182.png',
   },
   {
@@ -44,7 +44,7 @@ const countrys = [
     src: 'https://saintnet.com/wp-content/uploads/2022/01/Panama%CC%81-272x182.png',
   },
   {
-    name: 'Panama',
+    name: 'Panamá',
     src: 'https://saintnet.com/wp-content/uploads/2022/01/Panama%CC%81-272x182.png',
   },
   {
@@ -61,10 +61,10 @@ export default function Home() {
   return (
     <>
       <Header></Header>
-      <Layout title="Saint - Home">
+      <Layout title="Saint - Inicio">
         <Background />
-        <h1 className={styles.title}>Gestor de Depositos en Annual SDK</h1>
-        <p className={styles.text}>Gestor de depositos usando la herramienta Annual SDK proporcionada por la empresa Saint</p>
+        <h1 className={styles.title}>{'Gestor de Depósitos en Annual SDK'}</h1>
+        <p className={styles.text}>{'Gestor de depósitos usando la herramienta Annual SDK proporcionada por la empresa Saint'}</p>
         <div className={styles.carouselContainer}>
           <div className={styles.Carrusel__Home}>
             <ul>
@@ -86,7 +86,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <h2 className={styles.subtitle}>{'¿Donde encontrarnos?'}</h2>
+        <h2 className={styles.subtitle}>{'¿Dónde encontrarnos?'}</h2>
         <div className={styles.countrysContainer}>
           {countrys.map((country, index) => {
             return <CountryCard key={index} countryName={country.name} countrySrc={country.src} />;

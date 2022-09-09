@@ -52,8 +52,16 @@ export default function Ver() {
     const newData = await getDeposits(token);
 
     if (newData.Status == 0) {
-      setData(newData.Data);
-      setDataDynamic(newData.Data);
+      const dataToSave = Array.from(newData.Data).filter((row) => {
+        if (row.Codigo && row.Descripcion && row.Direccion1 && row.Representante && row.Telefono) {
+          return true;
+        }
+
+        return false;
+      });
+
+      setData(dataToSave);
+      setDataDynamic(dataToSave);
       setLoading(false);
     } else {
       localStorage.clear();
@@ -76,9 +84,9 @@ export default function Ver() {
         </div>
       )}
       <Header />
-      <Layout title="Saint - Depositos">
+      <Layout title={'Saint - Depósitos'}>
         <Background />
-        <h1 className={styles.title}>Lista de Depositos</h1>
+        <h1 className={styles.title}>{'Lista de Depósitos'}</h1>
         <div className={styles.form}>
           <div className={styles.searchIcon}>
             <SearchIcon color="#444" />
@@ -89,11 +97,11 @@ export default function Ver() {
           <table className={styles.container}>
             <tbody>
               <tr className={styles.tableHeader}>
-                <td>Codigo</td>
+                <td>Código</td>
                 <td>Nombre</td>
                 <td>{'Dirección'}</td>
                 <td>Representante</td>
-                <td>Telefono</td>
+                <td>Teléfono</td>
                 <td>Borrar</td>
               </tr>
               {Array.from(dataDynamic).map((dataElement, index) => {

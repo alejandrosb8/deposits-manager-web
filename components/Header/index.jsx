@@ -26,7 +26,7 @@ export default function Header() {
           </li>
           <li className={styles.listElement}>
             <div className={styles.dropbox}>
-              <span className={styles.span}>Depositos</span>
+              <span className={styles.span}>{'Depósitos'}</span>
               <div className={styles.dropboxContent}>
                 <Link href="/depositos/ver">
                   <a className={styles.navElement}>Ver</a>
