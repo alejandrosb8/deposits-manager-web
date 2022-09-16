@@ -84,9 +84,9 @@ export default function Ver() {
         </div>
       )}
       <Header />
-      <Layout title={'Saint - Depósitos'}>
+      <Layout title={'Saint'}>
         <Background />
-        <h1 className={styles.title}>{'Lista de Depósitos'}</h1>
+        <h1 className={styles.title}>{'Lista de establecimientos'}</h1>
         <div className={styles.form}>
           <div className={styles.searchIcon}>
             <SearchIcon color="#444" />

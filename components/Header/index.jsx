@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Logouticon from '../LogoutIcon';
 
 export default function Header() {
   const router = useRouter();
@@ -13,37 +14,38 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.logo}>
-        <Image className={styles.logo__image} width={120} height={40} src="/LogoSaint.png" alt="Logo de Saint"></Image>
-      </div>
-      <nav className={styles.nav}>
-        <ul className={styles.listContainer}>
-          <li className={styles.listElement}>
-            <Link href="/">
-              <a className={styles.navElement}>Inicio</a>
-            </Link>
-          </li>
-          <li className={styles.listElement}>
-            <div className={styles.dropbox}>
-              <span className={styles.span}>{'Depósitos'}</span>
-              <div className={styles.dropboxContent}>
-                <Link href="/depositos/ver">
-                  <a className={styles.navElement}>Ver</a>
-                </Link>
-                <Link href="/depositos/agregar">
-                  <a className={styles.navElement}>Agregar</a>
-                </Link>
+    <>
+      <div className={styles.headerContainer}></div>
+      <header className={styles.header}>
+        <div className={styles.logo}>
+          <Image className={styles.logo__image} width={120} height={40} src="/LogoSaint.png" alt="Logo de Saint"></Image>
+        </div>
+        <nav className={styles.nav}>
+          <ul className={styles.listContainer}>
+            <li className={styles.listElement}>
+              <Link href="/">
+                <a className={styles.navElement}>Inicio</a>
+              </Link>
+            </li>
+            <li className={styles.listElement}>
+              <div className={styles.dropbox}>
+                <span className={styles.span}>{'Servicios'}</span>
+                <div className={styles.dropboxContent}>
+                  <Link href="/depositos/ver">
+                    <a className={styles.navElement}>Ver</a>
+                  </Link>
+                  <Link href="/depositos/agregar">
+                    <a className={styles.navElement}>Agregar</a>
+                  </Link>
+                </div>
               </div>
-            </div>
-          </li>
-          <li className={styles.listElement}>
-            <button onClick={logOutHandler} className={styles.navElement}>
-              Salir
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </header>
+            </li>
+            <li className={styles.listElement}>
+              <Logouticon logOutHandler={logOutHandler} className={styles.navElement} />
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </>
   );
 }

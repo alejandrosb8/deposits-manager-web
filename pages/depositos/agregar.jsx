@@ -55,29 +55,29 @@ export default function Agregar() {
     <>
       <Header />
       <Background />
-      <Layout title={'Saint - Depósitos'}>
-        <h1 className={styles.title}>{'Agregar un depósito'}</h1>
+      <Layout title={'Saint'}>
+        <h1 className={styles.title}>{'Agregar un establecimiento'}</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputContainer}>
             <div className={styles.inputGroup}>
               <label htmlFor="codigo">{'Código'}</label>
-              <input type="text" placeholder="p.ej 01" id="codigo" required />
+              <input type="text" placeholder="Ejemplo: 01" id="codigo" required />
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="nombre">Nombre</label>
-              <input type="text" placeholder="p.ej Mi depósito" id="nombre" required />
+              <input type="text" placeholder="Ejemplo: Mi depósito" id="nombre" required />
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="direccion">{'Dirección'}</label>
-              <input type="text" placeholder="p.ej Avenida 7 Calle 8" id="direccion" required />
+              <input type="text" placeholder="Ejemplo: Avenida 7 Calle 8" id="direccion" required />
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="representante">Representante</label>
-              <input type="text" placeholder="p.ej Manuel Carroz" id="representante" required />
+              <input type="text" placeholder="Ejemplo: Manuel Carroz" id="representante" required />
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="telefono">{'Teléfono'}</label>
-              <input type="tel" placeholder="p.ej 4124546867" id="telefono" pattern="[0-9]{10}" required />
+              <input type="tel" placeholder="Ejemplo: 4124546867" id="telefono" pattern="[0-9]{10}" required />
             </div>
           </div>
           {loading ? (

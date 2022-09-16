@@ -44,11 +44,6 @@
   border: none;
   outline: none;
   padding-left: 2.2rem;
-  border-radius: 6px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -o-border-radius: 6px;
   box-shadow: 0 0 18px 4px hsl(238, 31%, 35%);
 }
 .tableContainer {
