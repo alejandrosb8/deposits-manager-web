@@ -1,9 +1,10 @@
 .icon {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   position: relative;
   top: 2px;
   cursor: pointer;
+  color: var(--orange);
   transition: color 0.1s ease-out;
   -webkit-transition: color 0.1s ease-out;
   -moz-transition: color 0.1s ease-out;
@@ -11,5 +12,5 @@
   -o-transition: color 0.1s ease-out;
 }
 .icon:hover {
-  color: var(--orange);
+  color: hsl(18, 100%, 40%);
 }
