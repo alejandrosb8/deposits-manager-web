@@ -2,12 +2,12 @@
   text-align: center;
   margin: auto;
   margin-top: 20px;
-  color: #fff;
+  color: #000;
   font-size: 2.2rem;
   font-weight: 700;
 }
 .form {
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   margin: auto;
   margin-top: 40px;
@@ -16,9 +16,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: #fafafa;
   padding: 40px 20px;
-  box-shadow: 0 0 18px 4px hsl(238, 31%, 35%);
   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -55,6 +54,7 @@
   outline: none;
   margin-top: 4px;
   border-bottom: 2px solid var(--blue);
+  background-color: transparent;
 }
 .inputGroup input::placeholder {
   color: #999;
@@ -76,4 +76,11 @@
 }
 .form button:hover {
   background-color: hsl(210, 98%, 45%);
+}
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
 }

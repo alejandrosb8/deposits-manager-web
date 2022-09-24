@@ -28,10 +28,11 @@ export default function Header() {
               </Link>
             </li>
             <li className={styles.listElement}>
-              <div className={styles.dropbox}>
+              {/*
+                  <div className={styles.dropbox}>
                 <span className={styles.span}>{'Servicios'}</span>
                 <div className={styles.dropboxContent}>
-                  <Link href="/depositos/ver">
+                  <Link href="/locales">
                     <a className={styles.navElement}>Ver</a>
                   </Link>
                   <Link href="/depositos/agregar">
@@ -39,6 +40,10 @@ export default function Header() {
                   </Link>
                 </div>
               </div>
+                */}
+              <Link href="/locales">
+                <a className={styles.navElement}>Locales</a>
+              </Link>
             </li>
             <li className={styles.listElement}>
               <Logouticon logOutHandler={logOutHandler} className={styles.navElement} />

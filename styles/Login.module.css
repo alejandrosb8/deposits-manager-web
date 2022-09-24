@@ -115,7 +115,7 @@
   color: red;
 }
 .form__submit_loading {
-  background-color: var(--blue);
+  background-color: hsl(210, 98%, 40%);
   font-size: 1rem;
   padding: 8px 22px;
   color: #fff;

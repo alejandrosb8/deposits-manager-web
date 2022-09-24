@@ -63,7 +63,6 @@ export default function Home() {
     <>
       <Header></Header>
       <Layout title="Inicio">
-        <Background />
         <div className={styles.pageBody}>
           <section>
             <div className={styles.carouselContainer}>
@@ -90,11 +89,11 @@ export default function Home() {
           </section>
           <section className={styles.InfoSection}>
             <div className={styles.InfoTextSection}>
-              <h1 className={styles.title}>Gestor y Administrador de Establecimientos</h1>
+              <h1 className={styles.title}>Gestor y administrador de locales</h1>
               <p className={styles.text}>
-                Sitio web para gestionar y registrar establecimientos de usuarios gracias al servicio ANNUAL SDK de la empresa SAINT.
+                Sitio web para gestionar y registrar locales de usuarios gracias al servicio ANNUAL SDK de la empresa SAINT.
               </p>
-              <Link href="/login">
+              <Link href="/locales">
                 <a className={styles.linkButton}>Empezar</a>
               </Link>
             </div>

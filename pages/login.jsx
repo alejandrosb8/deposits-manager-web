@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import styles from './../styles/Login.module.css';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getToken } from './../utils/api';
 import { useRouter } from 'next/router';
 
@@ -10,6 +10,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const redirect = router.query['redirect'];
 
   const handleSutmit = async (e) => {
     e.preventDefault();
@@ -22,7 +23,11 @@ export default function Login() {
     const data = await getToken(idUser.value, password.value);
     if (data.Status === 0) {
       localStorage.setItem('token', data.Message);
-      router.push('/');
+      if (redirect === 'depositos') {
+        router.push('/locales');
+      } else {
+        router.push('/');
+      }
     } else {
       setError('*' + data.Message);
     }

@@ -41,12 +41,17 @@
 .navElement {
   text-decoration: none;
   border: none;
-  color: #000;
+  color: #444;
   font-size: 1.1rem;
   font-weight: 500;
   background-color: transparent;
   cursor: pointer;
   position: relative;
+  transition: color 0.25s ease-out;
+  -webkit-transition: color 0.25s ease-out;
+  -moz-transition: color 0.25s ease-out;
+  -ms-transition: color 0.25s ease-out;
+  -o-transition: color 0.25s ease-out;
 }
 .navElement::after {
   position: absolute;
@@ -76,6 +81,10 @@
   -ms-transform: scaleX(1);
   -o-transform: scaleX(1);
 }
+.navElement:hover {
+  color: #000;
+}
+
 .span {
   color: #000;
   font-size: 1.1rem;
