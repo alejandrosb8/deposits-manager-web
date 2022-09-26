@@ -7,7 +7,7 @@ import addModule from './../styles/Agregar.module.css';
 import { useRouter } from 'next/router';
 import LoadingIcon from '../components/LoadingIcon';
 import { SearchIcon } from '../components/SearchIcon';
-import { deleteDeposit, addDeposit, getDeposits } from '../utils/api';
+import { deleteDeposit, addDeposit, getDeposits, updateDeposit } from '../utils/api';
 
 export default function Locales() {
   const router = useRouter();
@@ -82,7 +82,10 @@ export default function Locales() {
       sessionStorage.clear('token');
       router.push('/login');
     } else if (submitData.Status == -98) {
-      alert('El código introducido ya existe');
+      const submitUpdateData = await updateDeposit(deposito, token);
+      if (submitUpdateData.Status !== 0) {
+        alert(submitUpdateData.Status);
+      }
     } else {
       alert(submitData.Status);
     }
@@ -133,7 +136,7 @@ export default function Locales() {
     const representante = document.getElementById('representante');
     const telefono = document.getElementById('telefono');
 
-    const newCode = e.target.value;
+    const newCode = e?.target?.value || document.getElementById('codigo').value;
     setCode(newCode);
     const rowData = data.find((row) => row.Codigo === newCode);
     if (rowData?.Codigo === newCode) {
@@ -147,6 +150,11 @@ export default function Locales() {
       representante.value = '';
       telefono.value = '';
     }
+  };
+
+  const handleClickCode = (e) => {
+    document.getElementById('codigo').value = e.target.textContent;
+    handleChange();
   };
 
   const handleDelete = async (e) => {
@@ -198,7 +206,9 @@ export default function Locales() {
                     const code = dataElement.Codigo;
                     return (
                       <tr key={index} className={styles.tableRow}>
-                        <td>{dataElement.Codigo}</td>
+                        <td onClick={handleClickCode} className={styles.codeText}>
+                          {dataElement.Codigo}
+                        </td>
                         <td>{dataElement.Descripcion}</td>
                         <td>{dataElement.Direccion1}</td>
                         <td>{dataElement.Representante}</td>
