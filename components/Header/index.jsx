@@ -18,7 +18,13 @@ export default function Header() {
       <div className={styles.headerContainer}></div>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <Image className={styles.logo__image} width={120} height={40} src="/LogoSaint.png" alt="Logo de Saint"></Image>
+          <Image
+            className={styles.logo__image}
+            width={120}
+            height={40}
+            src="/LogoSaint.png"
+            alt="Logo de Saint"
+          ></Image>
         </div>
         <nav className={styles.nav}>
           <ul className={styles.listContainer}>
@@ -32,7 +38,7 @@ export default function Header() {
                   <div className={styles.dropbox}>
                 <span className={styles.span}>{'Servicios'}</span>
                 <div className={styles.dropboxContent}>
-                  <Link href="/locales">
+                  <Link href="/comercios">
                     <a className={styles.navElement}>Ver</a>
                   </Link>
                   <Link href="/depositos/agregar">
@@ -41,8 +47,13 @@ export default function Header() {
                 </div>
               </div>
                 */}
-              <Link href="/locales">
-                <a className={styles.navElement}>Locales</a>
+              <Link href="/comercios">
+                <a className={styles.navElement}>Comercios</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ubicacion">
+                <a className={styles.navElement}>Ubicación</a>
               </Link>
             </li>
             <li className={styles.listElement}>

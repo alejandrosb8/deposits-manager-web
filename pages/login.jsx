@@ -24,7 +24,7 @@ export default function Login() {
     if (data.Status === 0) {
       localStorage.setItem('token', data.Message);
       if (redirect === 'depositos') {
-        router.push('/locales');
+        router.push('/comercios');
       } else {
         router.push('/');
       }

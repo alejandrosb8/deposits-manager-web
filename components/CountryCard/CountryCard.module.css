@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 .spanElement {
   content: '';
@@ -27,6 +28,7 @@
   -moz-transition: transform 0.2s ease-out;
   -ms-transition: transform 0.2s ease-out;
   -o-transition: transform 0.2s ease-out;
+  cursor: pointer;
 }
 .container:hover .spanElement {
   transform: translateX(0);

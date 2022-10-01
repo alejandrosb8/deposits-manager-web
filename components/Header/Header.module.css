@@ -111,7 +111,7 @@
 .dropbox:hover .dropboxContent {
   display: flex;
 }
-@media (min-width: 350px) {
+@media (min-width: 450px) {
   .logo {
     display: inline-block;
   }

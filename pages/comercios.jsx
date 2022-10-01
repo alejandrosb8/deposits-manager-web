@@ -1,22 +1,20 @@
 import React from 'react';
-import Header from '../../components/Header';
-import Layout from '../../components/Layout';
-import Background from '../../components/Background';
-import { getDeposits } from '../../utils/api';
+import Header from '../components/Header';
+import Layout from '../components/Layout';
 import { useEffect, useState } from 'react';
-import styles from './../../styles/Ver.module.css';
-import addModule from './../../styles/Agregar.module.css';
+import styles from './../styles/Ver.module.css';
+import addModule from './../styles/Agregar.module.css';
 import { useRouter } from 'next/router';
-import LoadingIcon from '../../components/LoadingIcon';
-import { SearchIcon } from '../../components/SearchIcon';
-import { TrashIcon } from '../../components/TrashIcon';
-import { deleteDeposit, addDeposit } from '../../utils/api';
+import LoadingIcon from '../components/LoadingIcon';
+import { SearchIcon } from '../components/SearchIcon';
+import { deleteDeposit, addDeposit, getDeposits, updateDeposit } from '../utils/api';
 
-export default function Ver() {
+export default function Comercios() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [dataDynamic, setDataDynamic] = useState([]);
+  const [code, setCode] = useState('');
 
   const handleInput = () => {
     const search = document.getElementById('searchInput');
@@ -39,7 +37,7 @@ export default function Ver() {
     setDataDynamic(filterItems(search.value));
   };
 
-  const handleClick = async (code) => {
+  /*const handleClick = async (code) => {
     const query = await deleteDeposit(code, localStorage.getItem('token'));
     if (query.Status == -2) {
       router.push({
@@ -49,7 +47,7 @@ export default function Ver() {
     } else {
       router.reload();
     }
-  };
+  };*/
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,14 +77,16 @@ export default function Ver() {
       direccion.value = '';
       representante.value = '';
       telefono.value = '';
-      alert('Deposito agregado con exito');
     } else if (submitData.Status == -2) {
       sessionStorage.clear('token');
       router.push('/login');
     } else if (submitData.Status == -98) {
-      alert('El código introducido ya existe');
+      const submitUpdateData = await updateDeposit(deposito, token);
+      if (submitUpdateData.Status !== 0) {
+        alert(submitUpdateData.Status + ' ' + submitUpdateData.Message);
+      }
     } else {
-      alert(submitData.Status);
+      alert(submitData.Status + ' ' + submitData.Message);
     }
 
     fetchData(token);
@@ -126,7 +126,53 @@ export default function Ver() {
         query: { redirect: 'depositos' },
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleChange = (e) => {
+    const nombre = document.getElementById('nombre');
+    const direccion = document.getElementById('direccion');
+    const representante = document.getElementById('representante');
+    const telefono = document.getElementById('telefono');
+
+    const newCode = e?.target?.value || document.getElementById('codigo').value;
+    setCode(newCode);
+    const rowData = data.find((row) => row.Codigo === newCode);
+    if (rowData?.Codigo === newCode) {
+      nombre.value = rowData.Descripcion;
+      direccion.value = rowData.Direccion1;
+      representante.value = rowData.Representante;
+      telefono.value = rowData.Telefono;
+    } else {
+      nombre.value = '';
+      direccion.value = '';
+      representante.value = '';
+      telefono.value = '';
+    }
+  };
+
+  const handleClickCode = (e) => {
+    document.getElementById('codigo').value = e.target.textContent;
+    handleChange();
+  };
+
+  const handleDelete = async (e) => {
+    const token = localStorage.getItem('token');
+    const query = await deleteDeposit(code, token);
+    if (query.Status == -2) {
+      router.push({
+        pathname: '/login',
+        query: { redirect: 'depositos' },
+      });
+    } else {
+      document.getElementById('codigo').value = '';
+      document.getElementById('nombre').value = '';
+      document.getElementById('direccion').value = '';
+      document.getElementById('representante').value = '';
+      document.getElementById('telefono').value = '';
+      fetchData(token);
+    }
+  };
   return (
     <>
       {loading && (
@@ -138,12 +184,18 @@ export default function Ver() {
       <Layout title={'Saint'}>
         <div className={styles.gridContainer}>
           <section className={styles.infoSection}>
-            <h1 className={styles.title}>{'Lista de establecimientos'}</h1>
+            <h1 className={styles.title}>{'Lista de comercios'}</h1>
             <div className={styles.form}>
               <div className={styles.searchIcon}>
                 <SearchIcon color="#444" />
               </div>
-              <input onInput={handleInput} className={styles.searchInput} type="text" id="searchInput" placeholder="Buscar..." />
+              <input
+                onInput={handleInput}
+                className={styles.searchInput}
+                type="text"
+                id="searchInput"
+                placeholder="Buscar..."
+              />
             </div>
             <div className={styles.tableContainer}>
               <table className={styles.container}>
@@ -159,7 +211,9 @@ export default function Ver() {
                     const code = dataElement.Codigo;
                     return (
                       <tr key={index} className={styles.tableRow}>
-                        <td>{dataElement.Codigo}</td>
+                        <td onClick={handleClickCode} className={styles.codeText}>
+                          {dataElement.Codigo}
+                        </td>
                         <td>{dataElement.Descripcion}</td>
                         <td>{dataElement.Direccion1}</td>
                         <td>{dataElement.Representante}</td>
@@ -172,16 +226,16 @@ export default function Ver() {
             </div>
           </section>
           <section className={styles.editSection}>
-            <h1 className={addModule.title}>{'Agregar un establecimiento'}</h1>
+            <h2 className={addModule.title}>{'Agregar, editar o borrar un comercio'}</h2>
             <form onSubmit={handleSubmit} className={addModule.form}>
               <div className={addModule.inputContainer}>
                 <div className={addModule.inputGroup}>
                   <label htmlFor="codigo">{'Código'}</label>
-                  <input type="text" placeholder="Ejemplo: 01" id="codigo" required />
+                  <input onChange={handleChange} type="text" placeholder="Ejemplo: 01" id="codigo" required />
                 </div>
                 <div className={addModule.inputGroup}>
                   <label htmlFor="nombre">Nombre</label>
-                  <input type="text" placeholder="Ejemplo: Mi depósito" id="nombre" required />
+                  <input type="text" placeholder="Ejemplo: Mi comercio" id="nombre" required />
                 </div>
                 <div className={addModule.inputGroup}>
                   <label htmlFor="direccion">{'Dirección'}</label>
@@ -196,13 +250,24 @@ export default function Ver() {
                   <input type="tel" placeholder="Ejemplo: 4124546867" id="telefono" pattern="[0-9]{10}" required />
                 </div>
               </div>
-              {loading ? (
-                <button type="submit" disabled>
-                  Cargando...
-                </button>
-              ) : (
-                <button type="submit">Agregar</button>
-              )}
+              <div className={addModule.buttonGroup}>
+                {loading ? (
+                  <button type="button" disabled>
+                    Cargando...
+                  </button>
+                ) : (
+                  <button type="button" onClick={handleDelete}>
+                    Eliminar
+                  </button>
+                )}
+                {loading ? (
+                  <button type="submit" disabled>
+                    Cargando...
+                  </button>
+                ) : (
+                  <button type="submit">Cargar</button>
+                )}
+              </div>
             </form>
           </section>
         </div>
